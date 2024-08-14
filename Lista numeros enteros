@@ -1,0 +1,59 @@
+package CLASES_OBJETOS;
+
+import java.util.Scanner;
+
+
+public class Lista {
+ 
+    
+    public static void main(String[] args) {
+
+Procesador procesador = new Procesador();
+        procesador.leerDatos();
+        procesador.analizarDatos();
+        procesador.mostrarResultados();
+    }
+}
+
+// Clase Procesador
+class Procesador {
+    private int[] numeros;  // Arreglo para almacenar los números
+    private int positivos;
+    private int negativos;
+    private int ceros;
+
+    // Método para leer los datos del usuario
+    public void leerDatos() {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Ingrese el tamaño del arreglo: ");
+            int tamaño = scanner.nextInt();
+            
+            numeros = new int[tamaño];  // Inicializa el arreglo con el tamaño dado por el usuario
+            
+            System.out.println("Ingrese " + tamaño + " números enteros:");
+            for (int i = 0; i < tamaño; i++) {
+                numeros[i] = scanner.nextInt();
+            }
+        }
+    }
+
+    // Método para analizar los datos del arreglo
+    public void analizarDatos() {
+        for (int numero : numeros) {
+            if (numero > 0) {
+                positivos++;
+            } else if (numero < 0) {
+                negativos++;
+            } else {
+                ceros++;
+            }
+        }
+    }
+
+    // Método para mostrar los resultados
+    public void mostrarResultados() {
+        System.out.println("Cantidad de números positivos: " + positivos);
+        System.out.println("Cantidad de números negativos: " + negativos);
+        System.out.println("Cantidad de ceros: " + ceros);
+    }
+}
